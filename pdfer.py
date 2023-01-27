@@ -2,8 +2,6 @@ import streamlit as st
 import fillpdf
 from fillpdf import fillpdfs
 import pandas as pd
-import csv
-import numpy as np
 import math
 
 st.title("Fill out PDF with data from CSV file")
@@ -22,11 +20,11 @@ def process():
             values = old_values[row].tolist()
             pdf_output = f"PDF{row}"
             map_dict = dict(zip(mapped_keys, values))
-            fillpdfs.write_fillable_pdf("test.pdf", f"{pdf_output}.pdf",
+            fillpdfs.write_fillable_pdf("../test.pdf", f"{pdf_output}.pdf",
                                         map_dict)
 
     map_dict = dict(zip(mapped_keys, values))
-    fillpdfs.write_fillable_pdf("test.pdf", f"{pdf_output}.pdf", map_dict)
+    fillpdfs.write_fillable_pdf("../test.pdf", f"{pdf_output}.pdf", map_dict)
 
 while csv_file and pdf_file:
     dict1 = list(fillpdfs.get_form_fields(pdf_file))
