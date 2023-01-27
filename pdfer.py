@@ -20,7 +20,7 @@ def process():
             values = old_values[row].tolist()
             pdf_output = f"PDF{row}"
             map_dict = dict(zip(mapped_keys, values))
-            fillpdfs.write_fillable_pdf("../test.pdf", f"{pdf_output}.pdf",
+            fillpdfs.write_fillable_pdf("C:/Users/stan/Desktop/AZIIX", f"{pdf_output}.pdf",
                                         map_dict)
 
     map_dict = dict(zip(mapped_keys, values))
