@@ -14,17 +14,18 @@ if csv_file is not None:
     old_values = list(df.values)
     # values = old_values[0].tolist()
 
-def process():
+def process(values, pdf_output):
     if rows > 1:
         for row in range(rows):
             values = old_values[row].tolist()
             pdf_output = f"PDF{row}"
             map_dict = dict(zip(mapped_keys, values))
-            fillpdfs.write_fillable_pdf("C:/Users/stan/Desktop/AZIIX/AZIIX - Claim Form.pdf", f"{pdf_output}.pdf",
+            print(map_dict)
+            fillpdfs.write_fillable_pdf("AZIIX - Claim Form.pdf", f"{pdf_output}.pdf",
                                         map_dict)
 
     map_dict = dict(zip(mapped_keys, values))
-    fillpdfs.write_fillable_pdf("../test.pdf", f"{pdf_output}.pdf", map_dict)
+    fillpdfs.write_fillable_pdf("AZIIX - Claim Form.pdf", f"{pdf_output}.pdf", map_dict)
 
 while csv_file and pdf_file:
     dict1 = list(fillpdfs.get_form_fields(pdf_file))
@@ -49,7 +50,7 @@ while csv_file and pdf_file:
         rows = st.number_input("How many rows, excluding header?", min_value=1, value=1)
         values = old_values[0].tolist()
         pdf_output = st.text_input("Name PDF file", key="OG")
-        st.button("Process", on_click=process, args=())
+        st.button("Process", on_click=process, args=([values, pdf_output]))
 
 
 
